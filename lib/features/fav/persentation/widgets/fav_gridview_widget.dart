@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ntgtask/core/helpers/app_spacing.dart';
 import 'package:ntgtask/core/helpers/app_strings.dart';
+import 'package:ntgtask/core/theming/colors.dart';
 import 'package:ntgtask/core/theming/styles.dart';
 import 'package:ntgtask/core/widgets/products_shimmer_widget.dart';
 import 'package:ntgtask/features/cart/persentation/controller/bloc/cart_bloc.dart';
@@ -62,9 +63,9 @@ class _FavGridviewWidgetState extends State<FavGridviewWidget> {
                                 content: Row(
                                   spacing: AppWidth.w8,
                                   children: [
-                                    const Icon(
+                                     Icon(
                                       Icons.check_circle,
-                                      color: Colors.white,
+                                      color: ColorsManager.white(context),
                                     ),
 
                                     Expanded(
@@ -73,7 +74,7 @@ class _FavGridviewWidgetState extends State<FavGridviewWidget> {
                                           context: context,
                                         ),
                                         style: TextStyles.font12Medium.copyWith(
-                                          color: Colors.white,
+                                               color: ColorsManager.white(context),
                                         ),
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,

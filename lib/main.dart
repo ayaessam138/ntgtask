@@ -7,7 +7,7 @@ import 'core/helpers/app_bloc_provider_list.dart';
 import 'core/helpers/dependency_injection.dart';
 import 'core/helpers/bloc_observal.dart';
 import 'features/botoomNavbar/persentation/screens/bottom_navbar_screen.dart';
-import 'features/profile/cubit/theme_cubit.dart';
+import 'core/cubit/theme_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

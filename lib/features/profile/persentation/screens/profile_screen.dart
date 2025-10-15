@@ -6,9 +6,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:ntgtask/core/helpers/app_spacing.dart';
 import 'package:ntgtask/core/helpers/app_strings.dart';
 import 'package:ntgtask/core/theming/styles.dart';
-import 'package:ntgtask/features/profile/cubit/theme_cubit.dart';
+import 'package:ntgtask/core/cubit/theme_cubit.dart';
 import 'package:ntgtask/core/theming/colors.dart';
-import 'package:ntgtask/features/profile/profile_appbar_widget.dart';
+import 'package:ntgtask/features/profile/persentation/widget/profile_appbar_widget.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});

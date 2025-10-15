@@ -4,7 +4,7 @@ import 'package:meta/meta.dart';
 import 'package:ntgtask/features/cart/persentation/screens/cart_screen.dart';
 import 'package:ntgtask/features/fav/persentation/screens/fav_screen.dart';
 import 'package:ntgtask/features/home/persentation/screens/home_screen.dart';
-import 'package:ntgtask/features/profile/profile_screen.dart';
+import 'package:ntgtask/features/profile/persentation/screens/profile_screen.dart';
 
 import '../../../../core/helpers/dependency_injection.dart';
 

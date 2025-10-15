@@ -11,7 +11,10 @@ import 'package:ntgtask/features/home/data/datasource/home_%20remote_datasource.
 import 'package:ntgtask/features/home/data/datasource/home_local_datasource.dart';
 import 'package:ntgtask/features/home/data/repo/home_repo.dart';
 import 'package:ntgtask/features/home/persentation/controller/bloc/home_bloc.dart';
-import 'package:ntgtask/features/profile/cubit/theme_cubit.dart';
+import 'package:ntgtask/core/cubit/theme_cubit.dart';
+import 'package:ntgtask/features/productdeatils/data/datasource/productdetails_remote_datasource.dart';
+import 'package:ntgtask/features/productdeatils/data/repo/products_details_repo.dart';
+import 'package:ntgtask/features/profile/bloc/products_detiails_bloc.dart';
 
 import '../network/dio_client.dart';
 import '../network/network_info.dart';
@@ -27,7 +30,7 @@ Future initDI() async {
 
   getIt.registerLazySingleton<BottomNavBarCubit>(() => BottomNavBarCubit());
   getIt.registerLazySingleton<ThemeCubit>(() => ThemeCubit());
-  
+
   //home
   getIt.registerLazySingleton(() => HomeLocalDatasource(sqlHelper: getIt()));
 
@@ -48,6 +51,9 @@ Future initDI() async {
   //fav
   getIt.registerLazySingleton(() => FavLocalDatasource(sqlHelper: getIt()));
   getIt.registerLazySingleton(() => FavRepo(localDatasource: getIt()));
-
   getIt.registerFactory<FavoritesBloc>(() => FavoritesBloc(repo: getIt()));
+  //productdetails
+  getIt.registerLazySingleton(() => ProductdetailsRemoteDatasource( dioClient: getIt()));
+  getIt.registerLazySingleton(() => ProductDetailsRepo(productdetailsRemoteDatasource: getIt()));
+  getIt.registerFactory<ProductsDetiailsBloc>(() => ProductsDetiailsBloc(repo: getIt()));
 }
