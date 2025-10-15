@@ -25,6 +25,7 @@ class BottomNavBarScreen extends StatelessWidget {
           bottomNavigationBar: Container(
             decoration: BoxDecoration(color: ColorsManager.white(context)),
             child: GNav(
+              selectedIndex: cubit.currentIndex,
               backgroundColor: ColorsManager.white(context),
               gap: AppWidth.fullWidth(context) * 0.01,
               iconSize: 20.sp,

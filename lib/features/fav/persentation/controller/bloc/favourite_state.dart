@@ -31,7 +31,7 @@ class FavCheckState extends FavouriteState {
 }
 
 class FavError extends FavouriteState {
-  final String message;
+  final ApiErrorModel message;
 
   const FavError(this.message);
 

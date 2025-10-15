@@ -35,10 +35,9 @@ class _FavGridviewWidgetState extends State<FavGridviewWidget> {
           current is FavLoaded || current is FavLoading || current is FavError,
       builder: (context, state) {
         if (state is FavLoading) {
-         // return Center(child: CircularProgressIndicator());
          return ProductsGridViewShimmerWidget();
         } else if (state is FavError) {
-          return Center(child: Text(state.message));
+          return Center(child: Text(state.message.message??''));
         } else if (state is FavLoaded) {
           var favProductsList = state.favItems;
           return favProductsList.isNotEmpty

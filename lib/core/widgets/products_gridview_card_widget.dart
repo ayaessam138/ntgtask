@@ -44,16 +44,16 @@ class ProductGridviewCardWidget extends StatelessWidget {
                   boxFit: BoxFit.fill,
                 ),
               ),
-
-
+      
+      
               BlocBuilder<FavoritesBloc, FavouriteState>(
                 builder: (context, state) {
                   bool isFav = false;
-
+      
                   if (state is FavLoaded) {
                     isFav = state.favItems.any((item) => item.id == productModel.id);
                   }
-
+      
                   return GestureDetector(
                     onTap: () {
                       if (isFav) {
@@ -77,8 +77,8 @@ class ProductGridviewCardWidget extends StatelessWidget {
               ),
             ],
           ),
-
-   
+      
+         
           Row(
             spacing: AppWidth.w16,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -104,7 +104,7 @@ class ProductGridviewCardWidget extends StatelessWidget {
               ),
             ],
           ),
-
+      
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

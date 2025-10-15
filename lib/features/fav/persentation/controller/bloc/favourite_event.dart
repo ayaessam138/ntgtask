@@ -26,11 +26,4 @@ class RemoveFromFavoritesEvent extends FavouriteEvent {
   List<Object> get props => [productId];
 }
 
-class CheckIfFavoriteEvent extends FavouriteEvent {
-  final int productId;
 
-  const CheckIfFavoriteEvent(this.productId);
-
-  @override
-  List<Object> get props => [productId];
-}

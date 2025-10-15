@@ -14,13 +14,20 @@ class BottomNavBarCubit extends Cubit<BottomNavBarState> {
   BottomNavBarCubit() : super(BottomNavBarInitial());
   static BottomNavBarCubit get get => getIt();
 
-  List<Widget> pages = [HomeScreen(),FavScreen(), CartScreen(), ProfileScreen()];
+  List<Widget> pages = [
+    HomeScreen(),
+    FavScreen(),
+    CartScreen(),
+    ProfileScreen(),
+  ];
 
   int currentIndex = 0;
 
   void changeIndex(int index) {
     emit(BottomNavBarInitial());
     currentIndex = index;
+    print("changeIndexchangeIndex");
+    print(currentIndex);
     emit(BottomNavBarChangeIndex());
   }
 }

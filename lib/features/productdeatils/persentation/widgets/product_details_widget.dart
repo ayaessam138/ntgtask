@@ -23,9 +23,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<FavoritesBloc>(
-      context,
-    ).add(CheckIfFavoriteEvent(widget.productId));
+
     BlocProvider.of<ProductsDetiailsBloc>(
       context,
     ).add(LoadProductDetailsEvent(productId: widget.productId));
@@ -41,12 +39,10 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
       builder: (context, state) {
         if (state is ProductDetailsLoading) {
           return ProductDetailsShimmerWidget();
-        }
-       else if (state is ProductDetailsFailure) {
+        } else if (state is ProductDetailsFailure) {
           return Center(child: Text(state.message));
-        }
-        else if (state is ProductDetailsLoaded) {
-         var product = state.product;
+        } else if (state is ProductDetailsLoaded) {
+          var product = state.product;
           return CustomScrollView(
             physics: const ClampingScrollPhysics(),
             slivers: [
@@ -66,34 +62,35 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                       overflow: TextOverflow.ellipsis,
                       style: TextStyles.font18Bold,
                     ),
-                    BlocListener<FavoritesBloc, FavouriteState>(
-                      listener: (context, state) {
-                        if (state is FavCheckState) {
-                          setState(() {
-                            isFav = state.isFavorite;
-                          });
-                        }
-                      },
-                      child: GestureDetector(
+                    BlocBuilder<FavoritesBloc, FavouriteState>(
+                    builder: (context, state) {
+                      bool isFav = false;
+
+                      if (state is FavLoaded) {
+                        isFav = state.favItems.any(
+                          (item) => item.id == product.id,
+                        );
+                      } else if (state is FavCheckState) {
+                        isFav = state.isFavorite;
+                      }
+
+                      return GestureDetector(
                         onTap: () {
                           if (isFav) {
-                            BlocProvider.of<FavoritesBloc>(context).add(
+                            context.read<FavoritesBloc>().add(
                               RemoveFromFavoritesEvent(product.id ?? 0),
                             );
                           } else {
-                            BlocProvider.of<FavoritesBloc>(
-                              context,
-                            ).add(AddToFavoritesEvent(product));
+                            context.read<FavoritesBloc>().add(
+                              AddToFavoritesEvent(product),
+                            );
                           }
-                          setState(() {
-                            isFav = !isFav;
-                          });
                         },
                         child: isFav
                             ? Icon(Icons.favorite, color: Colors.red)
                             : Icon(Icons.favorite_border, color: Colors.black),
-                      ),
-                    ),
+                      );
+                    }),
                   ],
                 ),
                 iconTheme: IconThemeData(color: ColorsManager.black(context)),
@@ -201,8 +198,8 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
               ),
             ],
           );
-        }else{
-         return SizedBox.shrink();
+        } else {
+          return SizedBox.shrink();
         }
       },
     );
