@@ -1,4 +1,3 @@
-
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,10 +20,11 @@ class ProfileScreen extends StatelessWidget {
         child: SingleChildScrollView(
           physics: ClampingScrollPhysics(),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ProfileAppbarWidget(),
               Padding(
-                padding:  EdgeInsets.all(AppPadding.p10),
+                padding: EdgeInsets.all(AppPadding.p10),
                 child: InkWell(
                   onTap: () {
                     if (context.locale.languageCode == 'en') {
@@ -56,7 +56,7 @@ class ProfileScreen extends StatelessWidget {
               ),
               Divider(),
               Padding(
-                padding:  EdgeInsets.all(AppPadding.p8),
+                padding: EdgeInsets.all(AppPadding.p8),
                 child: InkWell(
                   onTap: () {
                     context.read<ThemeCubit>().toggleTheme();
@@ -65,24 +65,57 @@ class ProfileScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Flexible(
-                        
                         child: AutoSizeText(
                           maxLines: 1,
                           AppStrings.changeTheme(context: context),
                           style: TextStyles.font16Semi,
                         ),
                       ),
-                      Flexible(
-                        child: AutoSizeText(
-                          maxLines: 1,
-                          context.read<ThemeCubit>().state.toString(),
-                          style: TextStyles.font16Semi,
-                        ),
+            
+                      BlocBuilder<ThemeCubit, ThemeMode>(
+                        builder: (context, state) {
+                          return Icon(
+                            state == ThemeMode.light
+                                ? Icons
+                                      .wb_sunny 
+                                : Icons.nights_stay,
+                            color: ColorsManager.black(context),
+                          );
+                        },
                       ),
                     ],
                   ),
                 ),
               ),
+
+              // Padding(
+              //   padding:  EdgeInsets.all(AppPadding.p8),
+              //   child: InkWell(
+              //     onTap: () {
+              //       context.read<ThemeCubit>().toggleTheme();
+              //     },
+              //     child: Row(
+              //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //       children: [
+              //         Flexible(
+
+              //           child: AutoSizeText(
+              //             maxLines: 1,
+              //             AppStrings.changeTheme(context: context),
+              //             style: TextStyles.font16Semi,
+              //           ),
+              //         ),
+              //         Flexible(
+              //           child: AutoSizeText(
+              //             maxLines: 1,
+              //             context.read<ThemeCubit>().state.toString(),
+              //             style: TextStyles.font16Semi,
+              //           ),
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ),

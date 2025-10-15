@@ -8,8 +8,6 @@ import 'package:ntgtask/core/widgets/app_cach_image.dart';
 import 'package:ntgtask/features/fav/persentation/controller/bloc/favourite_bloc.dart';
 import 'package:ntgtask/features/home/data/model/product_model.dart';
 
-
-
 class ProductGridviewCardWidget extends StatelessWidget {
   final ProductModel productModel;
   final void Function() onTapAddToCart;
@@ -44,46 +42,46 @@ class ProductGridviewCardWidget extends StatelessWidget {
                   boxFit: BoxFit.fill,
                 ),
               ),
-      
-      
+
               BlocBuilder<FavoritesBloc, FavouriteState>(
                 builder: (context, state) {
                   bool isFav = false;
-      
+
                   if (state is FavLoaded) {
-                    isFav = state.favItems.any((item) => item.id == productModel.id);
+                    isFav = state.favItems.any(
+                      (item) => item.id == productModel.id,
+                    );
                   }
-      
+
                   return GestureDetector(
                     onTap: () {
                       if (isFav) {
                         context.read<FavoritesBloc>().add(
-                              RemoveFromFavoritesEvent(productModel.id ?? 0),
-                            );
+                          RemoveFromFavoritesEvent(productModel.id ?? 0),
+                        );
                       } else {
                         context.read<FavoritesBloc>().add(
-                              AddToFavoritesEvent(productModel),
-                            );
+                          AddToFavoritesEvent(productModel),
+                        );
                       }
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: isFav
-                        ? Icon(Icons.favorite, color: Colors.red)
-                        : Icon(Icons.favorite_border, color: Colors.black),
+                          ? Icon(Icons.favorite, color: Colors.red)
+                          : Icon(Icons.favorite_border, color: Colors.black),
                     ),
                   );
                 },
               ),
             ],
           ),
-      
-         
+
           Row(
             spacing: AppWidth.w16,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Expanded(
+              Flexible(
                 child: AutoSizeText(
                   productModel.title ?? '',
                   style: TextStyles.font14Semi,
@@ -92,6 +90,7 @@ class ProductGridviewCardWidget extends StatelessWidget {
                 ),
               ),
               Row(
+                spacing: AppWidth.w6,
                 children: [
                   Icon(Icons.star, color: ColorsManager.yellowColor(context)),
                   AutoSizeText(
@@ -104,7 +103,7 @@ class ProductGridviewCardWidget extends StatelessWidget {
               ),
             ],
           ),
-      
+
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

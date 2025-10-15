@@ -35,56 +35,61 @@ class CartScreen extends StatelessWidget {
               total = state.total;
             }
 
-            return SingleChildScrollView(
-              physics: ClampingScrollPhysics(),
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: AppWidth.w24),
-                child: Column(
-                  spacing: AppHeight.h20,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CartAppbarWidget(),
+            return Column(
+              children: [
+                // Scrollable content
+                Expanded(
+                  child: SingleChildScrollView(
+                    physics: ClampingScrollPhysics(),
+                    padding: EdgeInsets.symmetric(horizontal: AppWidth.w24),
+                    child: Column(
+                      spacing: AppHeight.h12,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CartAppbarWidget(),
+                        SizedBox(height: AppHeight.h20),
 
-                    SizedBox(height: AppHeight.h20),
-
-                    if (cartItems.isEmpty)
-                      Center(
-                        child: Padding(
-                          padding: EdgeInsets.only(top: AppHeight.h56),
-                          child: AutoSizeText(
-                            AppStrings.yourCartIsEmpty(context: context),
-                            style: TextStyles.font18Medium.copyWith(
-                              color: ColorsManager.darkGreyColor(context),
+                        if (cartItems.isEmpty)
+                          Center(
+                            child: Padding(
+                              padding: EdgeInsets.only(top: AppHeight.h56),
+                              child: AutoSizeText(
+                                AppStrings.yourCartIsEmpty(context: context),
+                                style: TextStyles.font18Medium.copyWith(
+                                  color: ColorsManager.darkGreyColor(context),
+                                ),
+                                maxLines: 1,
+                              ),
+                            ),
+                          )
+                        else ...[
+                          CartListviewWidget(),
+                           Divider(thickness: 1, color: ColorsManager.darkGreyColor(context)),
+                          AutoSizeText(
+                            AppStrings.shippingInformation(context: context),
+                            textAlign: TextAlign.center,
+                            style: TextStyles.font20semi.copyWith(
+                              color: ColorsManager.black(context),
                             ),
                             maxLines: 1,
                           ),
-                        ),
-                      )
-                    else ...[
-                      SizedBox(
-                        height: AppHeight.fullHeight(context) * 0.35,
-                        child: CartListviewWidget(),
-                      ),
-
-                      AutoSizeText(
-                        AppStrings.shippingInformation(context: context),
-                        textAlign: TextAlign.center,
-                        style: TextStyles.font20semi.copyWith(
-                          color: ColorsManager.black(context),
-                        ),
-                        maxLines: 1,
-                      ),
-                   CartVisaContanierWidget(),
-                      CartShoppingInformationWidget(
-                        subtotal: subtotal,
-                        shippingFee: shippingFee,
-                        taxes: taxes,
-                        total: total,
-                      ),
-                    ],
-                  ],
+                          CartVisaContanierWidget(),
+                          CartShoppingInformationWidget(
+                            subtotal: subtotal,
+                            shippingFee: shippingFee,
+                            taxes: taxes,
+                            total: total,
+                          ),
+                        ],
+                
+                      ],
+                    ),
+                  ),
                 ),
-              ),
+
+           
+                
+              ],
             );
           },
         ),

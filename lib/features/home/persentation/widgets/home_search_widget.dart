@@ -72,9 +72,9 @@ class HomeSearchWidget extends StatelessWidget {
 
             Flexible(
               child: Container(
-                width: 90.w,
+                width: 92.w,
                 height: 40.h,
-                padding: EdgeInsets.symmetric(horizontal: AppWidth.w6),
+                padding: EdgeInsets.symmetric(horizontal: AppWidth.w16,vertical: AppHeight.h10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(AppRadius.r20),
                   color: ColorsManager.mainColor(context),

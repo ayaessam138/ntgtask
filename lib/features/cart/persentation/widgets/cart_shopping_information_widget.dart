@@ -36,9 +36,7 @@ class CartShoppingInformationWidget extends StatelessWidget {
             ),
             AutoSizeText(
               "\$${subtotal.toStringAsFixed(2)}",
-              style: TextStyles.font16Semi.copyWith(
-                color: ColorsManager.darkGreyColor(context),
-              ),
+              style: TextStyles.font16Semi,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
@@ -57,9 +55,7 @@ class CartShoppingInformationWidget extends StatelessWidget {
             ),
             AutoSizeText(
               "\$$shippingFee",
-              style: TextStyles.font16Semi.copyWith(
-                color: ColorsManager.darkGreyColor(context),
-              ),
+              style: TextStyles.font16Semi,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
@@ -78,16 +74,14 @@ class CartShoppingInformationWidget extends StatelessWidget {
             ),
             AutoSizeText(
               "\$$taxes",
-              style: TextStyles.font16Semi.copyWith(
-                color: ColorsManager.darkGreyColor(context),
-              ),
+              style: TextStyles.font16Semi,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
           ],
         ),
 
-        Divider(thickness: 1, color: ColorsManager.greyColor(context)),
+        Divider(thickness: 1, color: ColorsManager.darkGreyColor(context)),
 
         // Total + Checkout Button
         Row(
@@ -110,21 +104,23 @@ class CartShoppingInformationWidget extends StatelessWidget {
                 ),
               ],
             ),
-            Container(
-              width: AppWidth.fullWidth(context) * .4,
-              padding: EdgeInsets.all(AppPadding.p12),
-              decoration: BoxDecoration(
-                color: ColorsManager.mainColor(context),
-                borderRadius: BorderRadius.circular(AppRadius.r48),
-              ),
-              child: Center(
-                child: AutoSizeText(
-                  AppStrings.checkout(context: context),
-                  style: TextStyles.font16Medium.copyWith(
-                    color: ColorsManager.white(context),
+            Flexible(
+              child: Container(
+                width: AppWidth.fullWidth(context) * .4,
+                padding: EdgeInsets.all(AppPadding.p12),
+                decoration: BoxDecoration(
+                  color: ColorsManager.mainColor(context),
+                  borderRadius: BorderRadius.circular(AppRadius.r48),
+                ),
+                child: Center(
+                  child: AutoSizeText(
+                    AppStrings.checkout(context: context),
+                    style: TextStyles.font16Medium.copyWith(
+                      color: ColorsManager.white(context),
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
                 ),
               ),
             ),

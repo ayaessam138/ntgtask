@@ -39,7 +39,7 @@ class CartAppbarWidget extends StatelessWidget {
           AutoSizeText(
             AppStrings.cart(context: context),
             textAlign: TextAlign.center,
-            style: TextStyles.font20semi.copyWith(color: ColorsManager.black(context)),
+            style: TextStyles.font20Bold.copyWith(color: ColorsManager.black(context)),
             maxLines: 1,
           ),
           GestureDetector(

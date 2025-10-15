@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ntgtask/core/helpers/app_spacing.dart';
 import 'package:ntgtask/core/theming/colors.dart';
@@ -24,13 +25,13 @@ class CartLisviewCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: AppWidth.w12,
+      spacing: AppWidth.w24,
       children: [
         Expanded(
-          flex: 5,
+          flex: 6,
           child: AppCachImage(
+            borderRadius: BorderRadius.circular(AppRadius.r12),
             height: AppHeight.fullHeight(context) * .23,
-            backgroundColor: ColorsManager.white(context),
             image: product.image ?? '',
             boxFit: BoxFit.cover,
             isNoBaseUrl: true,
@@ -40,23 +41,27 @@ class CartLisviewCardWidget extends StatelessWidget {
         Expanded(
           flex: 9,
           child: Column(
+            
             crossAxisAlignment: CrossAxisAlignment.start,
-            spacing: AppHeight.h6,
+            // spacing: AppHeight.h6,
             children: [
               AutoSizeText(
                 product.category ?? '',
                 style: TextStyles.font12semi.copyWith(
-                  color: ColorsManager.greyColor(context),
+                  color: ColorsManager.darkGreyColor(context),
                 ),
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),
+              AppSpace.vertical(AppHeight.h8),
               AutoSizeText(
                 product.title ?? "",
                 maxLines: 3,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyles.font16Semi,
               ),
+              
+              AppSpace.vertical(18.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -72,7 +77,7 @@ class CartLisviewCardWidget extends StatelessWidget {
                         ),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(AppRadius.r8),
-                          border: Border.all(color: ColorsManager.greyColor(context)),
+                          border: Border.all(color: ColorsManager.darkGreyColor(context)),
 
                           color: const Color.fromARGB(12, 255, 255, 255),
                         ),
@@ -97,7 +102,7 @@ class CartLisviewCardWidget extends StatelessWidget {
                           vertical: AppHeight.h8,
                         ),
                         decoration: BoxDecoration(
-                          border: Border.all(color: ColorsManager.greyColor(context)),
+                          border: Border.all(color: ColorsManager.darkGreyColor(context)),
                           borderRadius: BorderRadius.circular(AppRadius.r8),
                           color: ColorsManager.white(context),
                         ),
@@ -113,6 +118,8 @@ class CartLisviewCardWidget extends StatelessWidget {
                   ),
                 ],
               ),
+
+              AppSpace.vertical(36.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -141,8 +148,8 @@ class CartLisviewCardWidget extends StatelessWidget {
                           }
                         },
                         child: isFav
-                            ? Icon(Icons.favorite, color: Colors.red)
-                            : Icon(Icons.favorite_border, color: Colors.black),
+                            ? Icon(Icons.favorite, color: Colors.red,size: 24.sp,)
+                            : Icon(Icons.favorite_border, color: Colors.black,size: 24.sp,),
                       );
                     },
                   ),
