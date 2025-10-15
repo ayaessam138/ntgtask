@@ -1,0 +1,23 @@
+{
+    "change": "تغيير",
+    "categories": "الفئات",
+    "flashSale": "تخفيضات سريعة",
+    "shopNow": "تسوق الآن",
+    "cart": "عربة التسوق",
+    "shippingInformation": "معلومات الشحن",
+    "total": "الإجمالي",
+    "shippingfee": "رسوم الشحن",
+    "taxes": "الضرائب",
+    "checkout": "الدفع",
+    "yourCartIsEmpty": "عربة التسوق فارغة",
+    "productDetails": "تفاصيل المنتج",
+    "addToCart": "أضف إلى العربة",
+    "description": "الوصف",
+    "addedToCart": "تمت الإضافة إلى العربة",
+    "favorite": "المفضلة",
+    "noFav": "لا توجد مفضلة",
+    "home": "الرئيسية",
+    "profile": "الملف الشخصي",
+    "changeLanguage": "تغيير اللغة",
+    "changeTheme": "تغيير الثيم"
+}

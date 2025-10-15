@@ -1,0 +1,24 @@
+{
+    "change": "Change",
+    "categories": "Categories",
+    "flashSale": "Flash Sale",
+    "shopNow": "Shop Now",
+    "cart": "Cart",
+    "shippingInformation": "Shipping Information",
+    "total": "Total",
+    "shippingfee": "Shipping fee",
+    "taxes": "Taxes",
+    "checkout": "Checkout",
+    "yourCartIsEmpty": "Your cart is empty",
+    "productDetails": "Product Details",
+    "addToCart": "Add to Cart",
+    "description": "Description",
+    "addedToCart": "Added to Cart",
+    "favorite": "Favorite",
+    "noFav": "No Favorite",
+    "home":"Home",
+    "profile":"Profile",
+    "changeLanguage":"Change Language",
+    "changeTheme":"Change Theme"
+
+}
