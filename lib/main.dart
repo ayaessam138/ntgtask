@@ -17,7 +17,7 @@ void main() async {
 
   runApp(
     DevicePreview(
-      enabled: true,
+      enabled: false,
       builder: (context) => EasyLocalization(
         startLocale: const Locale('en'),
         supportedLocales: const [Locale('en'), Locale('ar')],
